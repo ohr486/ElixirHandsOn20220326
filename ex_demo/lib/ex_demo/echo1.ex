@@ -1,7 +1,7 @@
-defmodule ExDemo.EchoServer do
+defmodule ExDemo.Echo1 do
   require Logger
 
-  def accept(port \\ 8080) do
+  def start(port \\ 8080) do
     {:ok, listen_sock} = :gen_tcp.listen(port, [:binary, packet: :line, active: false, reuseaddr: true])
     Logger.info "start echo server on #{port} port ..."
     loop_acceptor(listen_sock)
