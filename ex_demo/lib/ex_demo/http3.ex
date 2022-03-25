@@ -69,7 +69,7 @@ defmodule ExDemo.Http3 do
 
     {status_code, status_msg, body} = case File.exists?(target_path) do
       true  -> {200, "OK",                    File.read!(target_path)}
-      false -> {404, "File Not Found",        "Not Found"}
+      false -> {404, "Not Found",             "404 Not Found"}
       _else -> {500, "Internal Server Error", "Ooops!"}
     end
 
