@@ -64,7 +64,7 @@ defmodule ExDemo.Http2 do
   def build_resp_msg(conn) do
     Logger.info "conn: #{inspect conn}"
 
-    msg = "this is http server (2) response"
+    msg = inspect(conn)
 
 """
 HTTP/1.1 200 OK
