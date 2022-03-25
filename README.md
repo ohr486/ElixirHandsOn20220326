@@ -2,11 +2,11 @@
 
 ## インベントスライド
 
-[tokyoex#17](https://docs.google.com/presentation/d/168Er7ncGSMvhKQ25YbQ_9rJ3gJc-zXbkVjBaY6h_sD0/edit#slide=id.g11ee65f72c4_0_0)
+[tokyoex#17](https://docs.google.com/presentation/d/168Er7ncGSMvhKQ25YbQ_9rJ3gJc-zXbkVjBaY6h_sD0/edit?usp=sharing)
 
 ## HTTPプロトコル解説資料
 
-[http server & elixir](https://docs.google.com/presentation/d/1wp5ootBYLAGowRKJrGwWJBxyY8JAPA_sGQjax6A1qmw/edit#slide=id.p)
+[http server & elixir](https://docs.google.com/presentation/d/1wp5ootBYLAGowRKJrGwWJBxyY8JAPA_sGQjax6A1qmw/edit?usp=sharing)
 
 ## サンプルアプリ
 
