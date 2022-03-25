@@ -3,7 +3,7 @@ defmodule ExDemo.Echo3 do
 
   def start(port \\ 8080) do
     {:ok, listen_sock} = :gen_tcp.listen(port, [:binary, packet: :line, active: false, reuseaddr: true])
-    Logger.info "start echo server on #{port} port ..."
+    Logger.info "start echo server (3) on #{port} port ..."
     loop_acceptor(listen_sock)
   end
 
@@ -17,8 +17,8 @@ defmodule ExDemo.Echo3 do
     case read_line(accept_sock) do
       :closed ->
         :gen_tcp.close(accept_sock)
-      "quit" ->
-        Logger.info "# quit server"
+      "quit\r\n" ->
+        Logger.info "# quit server ..."
         :timer.sleep(1000)
         System.halt
       msg ->
@@ -29,12 +29,11 @@ defmodule ExDemo.Echo3 do
 
   def read_line(accept_sock) do
     case :gen_tcp.recv(accept_sock, 0) do
-      {:ok, raw_msg} ->
-        msg = String.trim(raw_msg)
+      {:ok, msg} ->
         Logger.info "# read line ===> #{msg}"
         msg
       {:error, :closed} ->
-        Logger.info "# read line ===> closed message"
+        Logger.info "# receive closed message"
         :closed
     end
   end
