@@ -22,12 +22,12 @@ defmodule ExDemo.Echo1 do
 
   def read_line(accept_sock) do
     {:ok, msg} = :gen_tcp.recv(accept_sock, 0)
-    Logger.info "# read line ===> #{msg}"
+    # Logger.info "# read line ===> #{msg}"
     msg
   end
 
   def write_line(msg, accept_sock) do
-    Logger.info "# write line ===> #{msg}"
+    # Logger.info "# write line ===> #{msg}"
     :gen_tcp.send(accept_sock, msg)
   end
 end

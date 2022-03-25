@@ -62,7 +62,7 @@ defmodule ExDemo.Http2 do
   end
 
   def build_resp_msg(conn) do
-    Logger.info "conn: #{inspect conn}"
+    # Logger.info "conn: #{inspect conn}"
 
     msg = inspect(conn)
 

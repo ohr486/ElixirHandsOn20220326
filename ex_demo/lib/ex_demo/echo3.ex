@@ -18,7 +18,7 @@ defmodule ExDemo.Echo3 do
       :closed ->
         :gen_tcp.close(accept_sock)
       "quit\r\n" ->
-        Logger.info "# quit server ..."
+        Logger.info "quit server ..."
         :timer.sleep(1000)
         System.halt
       msg ->
@@ -30,16 +30,16 @@ defmodule ExDemo.Echo3 do
   def read_line(accept_sock) do
     case :gen_tcp.recv(accept_sock, 0) do
       {:ok, msg} ->
-        Logger.info "# read line ===> #{msg}"
+        # Logger.info "# read line ===> #{msg}"
         msg
       {:error, :closed} ->
-        Logger.info "# receive closed message"
+        # Logger.info "# receive closed message"
         :closed
     end
   end
 
   def write_line(msg, accept_sock) do
-    Logger.info "# write line ===> #{msg}"
+    #Logger.info "# write line ===> #{msg}"
     :gen_tcp.send(accept_sock, msg)
   end
 end
