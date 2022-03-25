@@ -62,40 +62,22 @@ defmodule ExDemo.Http3 do
   end
 
   def build_resp_msg(conn) do
-    Logger.info "conn: #{inspect conn}"
+    # Logger.info "conn: #{inspect conn}"
 
-    target = Map.get(conn, :target)
-    Logger.info "target[#{target}]"
+    target_path = "#{File.cwd!}/priv#{Map.get(conn, :target)}"
+    # Logger.info "file: #{target_path} ---> exists? [#{File.exists?(target_path)}]"
 
-    cwd = File.cwd!
-    Logger.info "cwd[#{cwd}]"
-
-    html_root = "#{cwd}/priv"
-    target_path = "#{html_root}/#{target}"
-    file_exist = File.exists?(target_path)
-    Logger.info "file_exist[#{file_exist}]"
-
-    status_code = case file_exist do
-                    true -> 200
-                    false -> 404
-                    _ -> 500
-                  end
-    status_msg = case file_exist do
-                    true -> "OK"
-                    false -> "File Not Found"
-                    _ -> "Internal Server Error"
-                  end
-    msg =case file_exist do
-           true -> File.read!(target_path)
-           false -> "Not Found"
-           _ -> "Oops! Internal Server Error"
-         end
+    {status_code, status_msg, body} = case File.exists?(target_path) do
+      true  -> {200, "OK",                    File.read!(target_path)}
+      false -> {404, "File Not Found",        "Not Found"}
+      _else -> {500, "Internal Server Error", "Ooops!"}
+    end
 
 """
 HTTP/1.1 #{status_code} #{status_msg}
-Content-Length: #{String.length(msg)}
+Content-Length: #{String.length(body)}
 
-#{msg}
+#{body}
 """
   end
 end
